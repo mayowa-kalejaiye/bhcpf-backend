@@ -10,8 +10,19 @@ class ChatRequest(BaseModel):
     lga: Optional[str] = None
     ward: Optional[str] = None
 
-@router.post("/")
+@router.post(
+    "/",
+    summary="AI Chat Orchestrator",
+    description="Ask a natural language question about BHCPF coverage. The AI will look up your location and the official policy rules to give a precise, localized answer."
+)
 async def chat_endpoint(request: ChatRequest):
+    """
+    Process a natural language query using the Gemini AI RAG pipeline.
+    
+    - **message**: The citizen's question (e.g., "Is malaria free?").
+    - **lga**: (Optional) The user's LGA to help locate nearby clinics.
+    - **ward**: (Optional) The user's Ward to help locate nearby clinics.
+    """
     if not request.message:
         raise HTTPException(status_code=400, detail="Message is required")
         

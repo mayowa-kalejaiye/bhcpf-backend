@@ -11,8 +11,19 @@ class FeedbackRequest(BaseModel):
     ward: Optional[str] = None
     facility_name: Optional[str] = None
 
-@router.post("/")
+@router.post(
+    "/",
+    summary="Submit Feedback or Report Issues",
+    description="Allows citizens to report illegal charges for covered services or submit general feedback about the BHCPF program."
+)
 async def submit_feedback(request: FeedbackRequest):
+    """
+    Save a user feedback report to the database.
+    - **message**: The user's feedback or report description.
+    - **facility_name**: (Optional) The specific PHC they are reporting.
+    - **lga**: (Optional) The LGA of the facility.
+    - **ward**: (Optional) The Ward of the facility.
+    """
     if not request.message:
         raise HTTPException(status_code=400, detail="Message is required")
         
