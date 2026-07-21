@@ -10,21 +10,32 @@ router = APIRouter()
     description="Retrieve a list of BHCPF-accredited primary health care facilities. You can optionally filter the results by Local Government Area (LGA) or Ward."
 )
 async def get_facilities(
+    state: Optional[str] = None,
     lga: Optional[str] = None, 
-    ward: Optional[str] = None
+    ward: Optional[str] = None,
+    limit: int = 1000,
+    offset: int = 0
 ):
     """
     Fetch facilities from the Supabase database.
+    - **state**: (Optional) Filter by State (case-insensitive substring match).
     - **lga**: (Optional) Filter by Local Government Area name (case-insensitive substring match).
     - **ward**: (Optional) Filter by Ward name (case-insensitive substring match).
+    - **limit**: Number of records to return (max 1000 due to database constraints).
+    - **offset**: Pagination offset.
     """
     try:
         query = supabase.table("facilities").select("*")
         
+        if state:
+            query = query.ilike("state", f"%{state}%")
         if lga:
             query = query.ilike("lga", f"%{lga}%")
         if ward:
             query = query.ilike("ward", f"%{ward}%")
+            
+        # Apply pagination
+        query = query.range(offset, offset + limit - 1)
             
         result = query.execute()
         
