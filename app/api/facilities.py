@@ -27,6 +27,15 @@ async def get_facilities(
             query = query.ilike("ward", f"%{ward}%")
             
         result = query.execute()
-        return {"facilities": result.data}
+        
+        # Dynamically generate Google Maps links for each facility
+        facilities = result.data
+        import urllib.parse
+        for fac in facilities:
+            query_string = f"{fac.get('facility_name', '')}, {fac.get('ward', '')} Ward, {fac.get('lga', '')} LGA, {fac.get('state', '')} State, Nigeria"
+            encoded_query = urllib.parse.quote_plus(query_string)
+            fac["google_maps_url"] = f"https://www.google.com/maps/search/?api=1&query={encoded_query}"
+            
+        return {"facilities": facilities}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
