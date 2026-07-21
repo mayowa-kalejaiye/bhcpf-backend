@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "title": "BHCPF National Benefit Package",
+    "scope": "National standard (BHCPF) - applies across all Nigerian states, including Plateau",
+    "core_rules": [
+      "Enrollees receive these services free of charge; providers must not charge for anything in this package.",
+      "Primary care must be accessed at the enrollee's registered PHC facility.",
+      "Secondary care must be accessed via referral to the nearest General Hospital.",
+      "Complaints or requests for money by a provider can be reported via the BHCPF hotline: 07007001111."
+    ],
+    "hotline": "07007001111"
+  },
+  "services": [
+    {
+      "level": "Primary",
+      "category": "General Consultation",
+      "service": "General consultation with prescribed drugs",
+      "details": "Consultation and prescribed drugs from accredited PHC facilities.",
+      "limits": null,
+      "access_point": "Registered PHC (primary facility of enrolment)"
+    },
+    {
+      "level": "Primary",
+      "category": "Health Education",
+      "service": "Disease prevention health education",
+      "details": "Family planning (safe period, pills, condoms, etc.); dental health; HIV/AIDS/TB/Malaria education; immunization; Vitamin A supplementation; nutrition promotion for children and pregnant women; personal, domestic and environmental hygiene promotion.",
+      "limits": null,
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Primary",
+      "category": "Primary Care Surgery",
+      "service": "Minor surgical procedures",
+      "details": "Incision & drainage, suturing of lacerations, minor burns, simple abrasions, minor wound debridement, circumcision of male infants, evacuation of impacted faeces, relief of urinary retention, primary eye care (conjunctivitis, parasitic/allergic ailments, simple contusions/abrasions).",
+      "limits": null,
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Primary",
+      "category": "Paediatrics",
+      "service": "Child welfare and common childhood illness treatment",
+      "details": "Growth monitoring, routine NPHCDA immunization, Vitamin A supplementation, nutrition advice; management of uncomplicated malnutrition; treatment of helminthiasis, malaria, diarrheal disease, schistosomiasis, URTIs, uncomplicated pneumonia, UTIs, otitis media, pharyngitis, childhood exanthemas, skin diseases/infestations, mumps; treatment of anaemia not requiring transfusion.",
+      "limits": "Anaemia treatment excludes cases requiring blood transfusion (refer to secondary level).",
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Primary",
+      "category": "Internal Medicine (Adult)",
+      "service": "Management of common adult infections and conditions",
+      "details": "Malaria, respiratory infections, UTIs, gastroenteritis, ENT infections, diarrheal disease, enteritis/typhoid, schistosomiasis, helminthiasis, skin infections (chicken pox, fungal e.g. tinea); emergency management of bites/stings (excl. serum); simple anaemia (not requiring transfusion); screening & referral for diabetes/hypertension/chronic disease; simple arthritis/musculoskeletal issues; routine sickle cell disease management; allergies.",
+      "limits": "Serum for bites/stings not included at primary level; diabetes/hypertension are screened and referred, not treated at primary level.",
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Primary",
+      "category": "HIV/STDs",
+      "service": "Voluntary Counselling and Testing (VCT)",
+      "details": "Voluntary counselling and testing for HIV/STDs.",
+      "limits": null,
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Primary",
+      "category": "Mental Health",
+      "service": "Primary mental health management",
+      "details": "Anxiety neurosis, psychosomatic illnesses, insomnia, identification of drug abuse.",
+      "limits": null,
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Primary",
+      "category": "Maternal, Neonatal & Child Health (MNCH)",
+      "service": "Family planning, antenatal, postnatal and delivery services",
+      "details": "Basic family planning commodities; routine antenatal clinic, drugs for duration of pregnancy, routine urine/blood tests, referral for complicated cases; postnatal care for all live births up to 6 weeks (cord care, eye care, management of simple neonatal infections); spontaneous vaginal delivery by skilled attendant incl. repair of birth injuries/episiotomy; essential drugs for emergency obstetric care (EmOC).",
+      "limits": "Postnatal coverage capped at 6 weeks from birth.",
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Primary",
+      "category": "Emergency Services",
+      "service": "Basic emergency stabilization",
+      "details": "Airway assessment/adjuncts, aspiration and clearance, breathing assessment (e.g. ambu-bag), pulse oximetry, bleeding control (compression dressing), haemodynamic assessment, IV line/venous cut-down, fluid resuscitation, basic CPR, assessment/management of unconscious patient, suturing of small lacerations (no resuscitation needed), splinting of fractures/cervical spine.",
+      "limits": null,
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Primary",
+      "category": "Basic Laboratory",
+      "service": "Basic lab investigations",
+      "details": "Malaria parasite test, urinalysis, HB/PCV, stool microscopy, urine microscopy, pregnancy test, blood glucose test.",
+      "limits": null,
+      "access_point": "Registered PHC"
+    },
+    {
+      "level": "Secondary",
+      "category": "General",
+      "service": "Consultation with prescribed drugs",
+      "details": "Consultation and prescribed drugs from accredited secondary healthcare facility.",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "General",
+      "service": "Emergencies outside usual residence",
+      "details": "Coverage for emergencies occurring outside the enrollee's usual residence or accredited healthcare provider.",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "General",
+      "service": "Admissions",
+      "details": "Inpatient admission coverage.",
+      "limits": "Max 15 cumulative days/year for medical admissions; max 20 cumulative days/year for surgical admissions.",
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "HIV/AIDS",
+      "service": "Treatment of opportunistic infections",
+      "details": "As defined in the HIV Treatment Protocol.",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Paediatrics",
+      "service": "Severe childhood illness management",
+      "details": "Severe respiratory/urinary infections, diarrhoea with moderate-severe dehydration, enteric fever, severe malaria, septicaemia, meningitis, severe measles; childhood non-communicable disease management; severe anaemia requiring transfusion; neonatal sepsis; birth asphyxia, neonatal jaundice, care for infants of diabetic mothers.",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Internal Medicine (Adult)",
+      "service": "Moderate-severe infection and chronic disease management",
+      "details": "Severe malaria, meningitis, septicaemia, complicated RTIs/typhoid; diabetes and hypertension management; sickle cell disease management; severe musculoskeletal conditions; cardiovascular, renal (nephritis, nephrotic syndrome), liver disease (hepatitis, amoebic liver abscess); severe anaemia; snake bites (including serum).",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Obstetrics & Gynaecology",
+      "service": "Complex maternal and gynaecological care",
+      "details": "Comprehensive emergency obstetric care; P/PROM management; hypertensive disease in pregnancy; bleeding in pregnancy; postpartum haemorrhage; eclampsia; caesarian section; ectopic gestation surgery; intra-uterine fetal death management; puerperal sepsis; instrumental/high-risk deliveries (1st, 4th+, multiples, malposition); hysterectomy for uncontrolled PPH; laparotomy for gynae emergencies; myomectomy; infertility investigations.",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Surgery",
+      "service": "Common surgical procedures",
+      "details": "Appendicectomy, herniorrhaphy, hydrocelectomy, management of testicular torsion, fracture management.",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Dental",
+      "service": "Surgical tooth extraction",
+      "details": "Simple and surgical tooth extraction for medical reasons without complications.",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Ophthalmology",
+      "service": "Eye surgery and care",
+      "details": "Major trauma, pterygium, glaucoma, cataract extraction, other simple ophthalmic surgery; foreign body removal; refraction incl. spectacles.",
+      "limits": "Spectacles capped at N5,000.",
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Ear, Nose & Throat",
+      "service": "ENT procedures",
+      "details": "Antral wash-out, foreign body removal, tonsillectomy, nasal polypectomy, tracheostomy, adenoidectomy, myringotomy.",
+      "limits": null,
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Physiotherapy",
+      "service": "Rehabilitation therapy",
+      "details": "Post-traumatic rehabilitation; management of palsies; post-cerebrovascular accident therapy.",
+      "limits": "Palsy and post-CVA therapy limited to 15 days with a maximum of 5 sessions each.",
+      "access_point": "Nearest General Hospital (via referral)"
+    },
+    {
+      "level": "Secondary",
+      "category": "Laboratory",
+      "service": "Advanced lab investigations",
+      "details": "Genotype, lumbar puncture, urea/electrolyte/creatinine, liver function test, ketone bodies, microscopy/culture/sensitivity (urine, blood, stool, sputum, wound, urethral, ear, eye, throat, aspirate, CSF, endoscopy, cervical swab, HVS), occult blood in stool, skin snip for microfilaria, AFB for TB, gram stain, Mantoux test, blood grouping/cross-matching, Hepatitis B surface antibody screening, confirmatory HIV test, full blood count, platelet/reticulocyte count, blood transfusion, chest/abdomen/skull/extremity/dental X-ray, abdominopelvic & obstetric scan.",
+      "limits": "Blood transfusion capped at up to 3 pints of safe whole blood or blood product(s).",
+      "access_point": "Nearest General Hospital (via referral)"
+    }
+  ]
+}
