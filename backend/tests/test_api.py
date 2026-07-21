@@ -45,3 +45,21 @@ def test_chat_endpoint(mock_generate_chat_response):
         "lga": "Kanke"
     })
     assert bad_response.status_code == 422 # FastAPI validation error for missing field
+
+@patch("app.database.supabase_client.supabase.table")
+def test_feedback_endpoint(mock_supabase_table):
+    # Mock supabase insert so we don't write to DB during tests
+    mock_execute = mock_supabase_table.return_value.insert.return_value.execute
+    mock_execute.return_value.data = [{"id": 1, "message": "Test issue"}]
+    
+    response = client.post("/api/feedback/", json={
+        "message": "I was charged for malaria drugs",
+        "facility_name": "PHC Namu",
+        "lga": "Kanke",
+        "ward": "Namu"
+    })
+    
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "success"
+    assert "data" in data

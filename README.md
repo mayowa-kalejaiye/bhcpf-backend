@@ -130,6 +130,28 @@ Fetch official BHCPF benefit package rules.
   }
   ```
 
+### 4. Submit Feedback / Report Issues
+Allows users to submit issues regarding facilities charging for free services or other general feedback.
+
+- **URL:** `/api/feedback/`
+- **Method:** `POST`
+- **Request Body:**
+  ```json
+  {
+    "message": "I was asked to pay 2000 for malaria medication.",
+    "facility_name": "PHC Namu",
+    "lga": "Kanke",
+    "ward": "Namu"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "status": "success",
+    "message": "Feedback submitted successfully"
+  }
+  ```
+
 ---
 
 ## Testing
