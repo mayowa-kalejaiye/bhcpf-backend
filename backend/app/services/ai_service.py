@@ -5,7 +5,7 @@ from app.database.supabase_client import supabase
 
 # Initialize Gemini
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 def get_context(lga: Optional[str] = None, ward: Optional[str] = None) -> tuple[str, str]:
     # 1. Fetch Benefits Context
