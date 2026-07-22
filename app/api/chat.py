@@ -7,7 +7,7 @@ router = APIRouter()
 
 class ChatRequest(BaseModel):
     message: str
-    language: Optional[str] = "English"
+    language: Optional[str] = "Auto"
     state: Optional[str] = None
     lga: Optional[str] = None
     ward: Optional[str] = None
@@ -22,7 +22,7 @@ async def chat_endpoint(request: ChatRequest):
     Process a natural language query using the Gemini AI RAG pipeline.
     
     - **message**: The citizen's question (e.g., "Is malaria free?").
-    - **language**: (Optional) The dialect or language to respond in (e.g. Pidgin, Hausa, Yoruba, Igbo). Defaults to English.
+    - **language**: (Optional) The dialect or language to respond in. Defaults to 'Auto' (matches user's language).
     - **state**: (Optional) The user's State to help locate nearby clinics.
     - **lga**: (Optional) The user's LGA to help locate nearby clinics.
     - **ward**: (Optional) The user's Ward to help locate nearby clinics.

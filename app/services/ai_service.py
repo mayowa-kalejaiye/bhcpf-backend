@@ -44,17 +44,22 @@ def get_context(state: Optional[str] = None, lga: Optional[str] = None, ward: Op
         
     return benefits_context, facilities_context
 
-async def generate_chat_response(question: str, language: str = "English", state: Optional[str] = None, lga: Optional[str] = None, ward: Optional[str] = None) -> str:
+async def generate_chat_response(question: str, language: str = "Auto", state: Optional[str] = None, lga: Optional[str] = None, ward: Optional[str] = None) -> str:
     benefits_context, facilities_context = get_context(state, lga, ward)
     
+    language_instruction = ""
+    if language.lower() == "auto":
+        language_instruction = "CRITICAL INSTRUCTION: Analyze the dialect or language of the User's Question. You MUST respond fluently in the EXACT same language or dialect the user used (e.g. if they ask in Nigerian Pidgin, reply strictly in Nigerian Pidgin. If they ask in Hausa, reply in Hausa)."
+    else:
+        language_instruction = f"""CRITICAL INSTRUCTION: You MUST respond to the user fluently in: {language}. 
+If {language} is "Pidgin", use natural Nigerian Pidgin English (e.g. "No wahala", "Wetin you dey find").
+If {language} is Hausa, Yoruba, or Igbo, write with accurate orthography."""
+
     prompt = f"""
 You are the official BHCPF Access Assistant for Nigeria. 
 Your job is to answer citizen questions about their health coverage and help them find facilities in their specific State, LGA, or Ward.
 
-CRITICAL INSTRUCTION: You MUST respond to the user fluently in: {language}. 
-If {language} is "Pidgin", use natural Nigerian Pidgin English (e.g. "No wahala", "Wetin you dey find", "Free of charge").
-If {language} is Hausa, Yoruba, or Igbo, write with accurate orthography. 
-If {language} is English, use plain, accessible English.
+{language_instruction}
 
 Be concise and helpful. 
 Do not hallucinate. ONLY use the information provided in the context below. 
