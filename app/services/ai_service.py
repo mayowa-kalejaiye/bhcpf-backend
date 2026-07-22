@@ -44,14 +44,19 @@ def get_context(state: Optional[str] = None, lga: Optional[str] = None, ward: Op
         
     return benefits_context, facilities_context
 
-async def generate_chat_response(question: str, state: Optional[str] = None, lga: Optional[str] = None, ward: Optional[str] = None) -> str:
+async def generate_chat_response(question: str, language: str = "English", state: Optional[str] = None, lga: Optional[str] = None, ward: Optional[str] = None) -> str:
     benefits_context, facilities_context = get_context(state, lga, ward)
     
     prompt = f"""
 You are the official BHCPF Access Assistant for Nigeria. 
 Your job is to answer citizen questions about their health coverage and help them find facilities in their specific State, LGA, or Ward.
 
-Be concise, helpful, and speak in plain English. 
+CRITICAL INSTRUCTION: You MUST respond to the user fluently in: {language}. 
+If {language} is "Pidgin", use natural Nigerian Pidgin English (e.g. "No wahala", "Wetin you dey find", "Free of charge").
+If {language} is Hausa, Yoruba, or Igbo, write with accurate orthography. 
+If {language} is English, use plain, accessible English.
+
+Be concise and helpful. 
 Do not hallucinate. ONLY use the information provided in the context below. 
 If a service is covered, state clearly whether it is at the Primary level (PHC) or Secondary level (General Hospital referral).
 It is illegal for providers to charge for covered services. The hotline is 07007001111.
