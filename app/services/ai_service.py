@@ -7,7 +7,7 @@ from app.database.supabase_client import supabase
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-2.5-flash')
 
-def get_context(lga: Optional[str] = None, ward: Optional[str] = None) -> tuple[str, str]:
+def get_context(state: Optional[str] = None, lga: Optional[str] = None, ward: Optional[str] = None) -> tuple[str, str]:
     # 1. Fetch Benefits Context
     benefits_response = supabase.table("benefits").select("*").execute()
     benefits_data = benefits_response.data
@@ -18,12 +18,17 @@ def get_context(lga: Optional[str] = None, ward: Optional[str] = None) -> tuple[
         
     # 2. Fetch Facilities Context
     facilities_context = ""
-    if lga or ward:
+    if state or lga or ward:
         query = supabase.table("facilities").select("*")
+        if state:
+            query = query.ilike("state", f"%{state}%")
         if lga:
             query = query.ilike("lga", f"%{lga}%")
         if ward:
             query = query.ilike("ward", f"%{ward}%")
+            
+        # Limit the context size so we don't blow up the LLM context window
+        query = query.limit(50)
         
         facilities_response = query.execute()
         facilities_data = facilities_response.data
@@ -31,20 +36,20 @@ def get_context(lga: Optional[str] = None, ward: Optional[str] = None) -> tuple[
         if facilities_data:
             facilities_context = "Available Facilities in requested area:\n"
             for f in facilities_data:
-                facilities_context += f"- {f['facility_name']} (LGA: {f['lga']}, Ward: {f['ward']})\n"
+                facilities_context += f"- {f['facility_name']} (State: {f['state']}, LGA: {f['lga']}, Ward: {f['ward']})\n"
         else:
             facilities_context = "No specific facilities found for the requested area. Please advise them to visit their registered PHC."
     else:
-        facilities_context = "User did not specify a location. Ask them for their LGA or Ward if they want to know a specific facility."
+        facilities_context = "User did not specify a location. Ask them for their State, LGA, or Ward if they want to find a specific facility."
         
     return benefits_context, facilities_context
 
-async def generate_chat_response(question: str, lga: Optional[str] = None, ward: Optional[str] = None) -> str:
-    benefits_context, facilities_context = get_context(lga, ward)
+async def generate_chat_response(question: str, state: Optional[str] = None, lga: Optional[str] = None, ward: Optional[str] = None) -> str:
+    benefits_context, facilities_context = get_context(state, lga, ward)
     
     prompt = f"""
-You are the official BHCPF Access Assistant for Plateau State, Nigeria. 
-Your job is to answer citizen questions about their health coverage and help them find facilities.
+You are the official BHCPF Access Assistant for Nigeria. 
+Your job is to answer citizen questions about their health coverage and help them find facilities in their specific State, LGA, or Ward.
 
 Be concise, helpful, and speak in plain English. 
 Do not hallucinate. ONLY use the information provided in the context below. 
