@@ -49,11 +49,12 @@ async def generate_chat_response(question: str, language: str = "Auto", state: O
     
     language_instruction = ""
     if language.lower() == "auto":
-        language_instruction = "CRITICAL INSTRUCTION: Analyze the dialect or language of the User's Question. You MUST respond fluently in the EXACT same language or dialect the user used (e.g. if they ask in Nigerian Pidgin, reply strictly in Nigerian Pidgin. If they ask in Hausa, reply in Hausa)."
+        language_instruction = "CRITICAL INSTRUCTION: Analyze the dialect or language of the User's Question. You MUST respond fluently in the EXACT same language or dialect the user used (e.g. if they ask in Nigerian Pidgin, reply strictly in Nigerian Pidgin. If they ask in Hausa, reply in Hausa). Do NOT provide English translations in brackets."
     else:
         language_instruction = f"""CRITICAL INSTRUCTION: You MUST respond to the user fluently in: {language}. 
 If {language} is "Pidgin", use natural Nigerian Pidgin English (e.g. "No wahala", "Wetin you dey find").
-If {language} is Hausa, Yoruba, or Igbo, write with accurate orthography."""
+If {language} is Hausa, Yoruba, or Igbo, write with accurate orthography.
+Do NOT provide English translations in brackets or parentheses. ONLY output the requested language."""
 
     prompt = f"""
 You are the official BHCPF Access Assistant for Nigeria. 
